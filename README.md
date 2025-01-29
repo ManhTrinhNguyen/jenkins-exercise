@@ -63,16 +63,20 @@ In order to see failing test, remove index.html or rename it and run tests.
     - **Install Docker :**
     ```
     - Update Package Manager: `sudo yum update`
-    - Install Docker: ##`sudo yum install docker` 
+    - Install Docker: `sudo yum install docker` 
     - When docker installed I have to start docker Daemon : sudo service docker start
     - I want to run docker command without using sudo . I will add user to Docker group: sudo usermod -aG docker $USER . After running  this command user may not add to docker group yet . I need to exit and login again
-    - Run Jenkins as a Docker Container: `docker run -d -p 8080:8080 -p 50000:50000 -v jenkins-home:/var/jenkins-home -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins`
+    ```
+
+    - **Install Jenkins**
+    ```
+     - Run Jenkins as a Docker Container: `docker run -d -p 8080:8080 -p 50000:50000 -v jenkins-home:/var/jenkins-home -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins`
     
-            -d: Detach mode
-            -p 8080:8080 : Jenkins run on port 8080
-            -v jenkins-home:/var/jenkins-home: Create jenkins volumn to persist data
-            -v /var/run/docker.sock:/var/run/docker.sock: This will mount docker CLI to Jenkins container so docker CLI will available in jenkins container
-            jenkins/jenkins: Jenkins Image
+        -d: Detach mode
+        -p 8080:8080 : Jenkins run on port 8080
+        -v jenkins-home:/var/jenkins-home: Create jenkins volumn to persist data
+        -v /var/run/docker.sock:/var/run/docker.sock: This will mount docker CLI to Jenkins container so docker CLI will available in jenkins container
+        jenkins/jenkins: Jenkins Image
 
     - Install Docker Inside Jenkins container so I have Docker CLI available in Jenkins : `curl https://get.docker.com/ > dockerinstall && chmod 777 dockerinstall && ./dockerinstall`
     - Inside jenkins container as root: `chmod o=rw /var/run/docker.sock` to make other user can use docker CLI in the container
