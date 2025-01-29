@@ -59,19 +59,24 @@ In order to see failing test, remove index.html or rename it and run tests.
                     -i: This flag will take the pem file as a parameter
                     ec2-user: I need to ssh to instance as a ec2 user not as a root user
         ```
-    - Update Package Manager: `yum update`
-    - Install Docker: `apt install docker.io` 
-    - Run Jenkins as a Docker Container: `docker run -d -p 8080:8080 -p 50000:50000 -v jenkins-home:/var/jenkins-home -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins`
 
-        ```
+    - **Install Docker :**
+    ```
+    - Update Package Manager: `sudo yum update`
+    - Install Docker: `sudo yum install docker.io` 
+    - When docker installed I have to start docker Daemon : sudo service docker start
+    - I want to run docker command without using sudo . I will add user to Docker group: sudo usermod -aG docker $USER . After running  this command user may not add to docker group yet . I need to exit and login again
+    - Run Jenkins as a Docker Container: `docker run -d -p 8080:8080 -p 50000:50000 -v jenkins-home:/var/jenkins-home -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins`
+    
             -d: Detach mode
             -p 8080:8080 : Jenkins run on port 8080
             -v jenkins-home:/var/jenkins-home: Create jenkins volumn to persist data
             -v /var/run/docker.sock:/var/run/docker.sock: This will mount docker CLI to Jenkins container so docker CLI will available in jenkins container
             jenkins/jenkins: Jenkins Image
-        ```
     - Install Docker Inside Jenkins container so I have Docker CLI available in Jenkins : `curl https://get.docker.com/ > dockerinstall && chmod 777 dockerinstall && ./dockerinstall`
     - Inside jenkins container as root: `chmod o=rw /var/run/docker.sock` to make other user can use docker CLI in the container
+    ```
+    
 2. When Jenkins available I can take the IP Address and the port to access. 
     - To create a Node Pipeline I need to configure Credentials to get access to source code 
     - Configure Nodejs so that Node will be available in Jenkins 
