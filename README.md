@@ -83,6 +83,7 @@ In order to see failing test, remove index.html or rename it and run tests.
     ```
     
 2. When Jenkins available I can take the IP Address and the port to access. 
+    ```
     - To create a Node Pipeline I need to configure Credentials to get access to source code 
     - Configure Nodejs so that Node will be available in Jenkins 
     - Configure Webhook Trigger pipeline to trigger pipeline whenever developer push code to a Repo
@@ -91,5 +92,6 @@ In order to see failing test, remove index.html or rename it and run tests.
         - From Github : `In the Repo go to : Setting -> Webhook -> Add Webhook`
         - Dynamic increment App version 
         - Dynamic Commit to a repo when done .
+    ```
 
 
