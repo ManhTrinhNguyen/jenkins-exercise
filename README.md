@@ -39,5 +39,17 @@ In order to see failing test, remove index.html or rename it and run tests.
 
     ```
 
-
+## Step 2 : Create a full pipeline for NodeJS App
+1. Rent a Droplet on Digital Ocean to run Jenkins as a Docker container 
+    - In the Server
+        - Update Package Manager: `apt update`
+        - Install Docker: `apt install docker.io` 
+        - Run Jenkins as a Docker Container: `docker run -d -p 8080:8080 -p 50000:50000 -v jenkins-home:/var/jenkins-home -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins`
+            ```
+                -d: Detach mode
+                -p 8080:8080 : Jenkins run on port 8080
+                -v jenkins-home:/var/jenkins-home: Create jenkins volumn to persist data
+                -v /var/run/docker.sock:/var/run/docker.sock: This will mount docker CLI to Jenkins container so docker CLI will available in jenkins container
+                jenkins/jenkins: Jenkins Image
+            ```
 
