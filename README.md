@@ -45,6 +45,7 @@ In order to see failing test, remove index.html or rename it and run tests.
         - Update Package Manager: `apt update`
         - Install Docker: `apt install docker.io` 
         - Run Jenkins as a Docker Container: `docker run -d -p 8080:8080 -p 50000:50000 -v jenkins-home:/var/jenkins-home -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins`
+        
             ```
                 -d: Detach mode
                 -p 8080:8080 : Jenkins run on port 8080
