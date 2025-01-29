@@ -41,6 +41,24 @@ In order to see failing test, remove index.html or rename it and run tests.
 
 ## Step 2 : Create a full pipeline for NodeJS App
 1. Rent a EC2 sercer on AWS to run Jenkins as a Docker container 
+    - **Step to create EC2 Instance :**
+        ```
+            1. Add Tags
+            2. Choose OS Image
+            3. Choose Capacity
+            4. Network Configuration
+            5. Configure Security Group
+            6. Add storage
+        ```
+
+    - **Connect to Intance :**
+        ```
+            1. Move .pem (key pair) to more secure location ~./ssh/
+            2. Change persion of .pem to make permission stricter with only me as a user can read that (chmod 400 instancefile)
+            3. Connect to instance : ssh -i ~/.ssh/docker-server.pem ec2-user@Ipv4
+                    -i: This flag will take the pem file as a parameter
+                    ec2-user: I need to ssh to instance as a ec2 user not as a root user
+        ```
     - Update Package Manager: `yum update`
     - Install Docker: `apt install docker.io` 
     - Run Jenkins as a Docker Container: `docker run -d -p 8080:8080 -p 50000:50000 -v jenkins-home:/var/jenkins-home -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins`
