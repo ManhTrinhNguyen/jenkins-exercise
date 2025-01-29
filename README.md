@@ -16,8 +16,28 @@ Make sure to download jest library before running test, otherwise jest command d
 
 In order to see failing test, remove index.html or rename it and run tests.
 
-## Dockerize Node App 
-1. To run Nodejs App I need Nodejs Image as a base 
+## Step 1 : Dockerize Node App 
+    ```
+        ## To run Node App i need Nodejs as a Base image
+        FROM node:20-alpine 
+        
+        ## RUN (Execute any Linux cmd inside the container) . 
+        ## I Create a /home/app dir inside the container
+        RUN mkdir -p /home/app 
+        
+        ## COPY (To Copy from the App in the Host to Destination in the container)
+        COPY ./app /home/app 
+        
+        ## WORKDIR : Make sure the container working on this Dir
+        WORKDIR /home/app 
+        
+        ## Install npm 
+        RUN npm install 
+        
+        ## CMD : Help me execute the entrypoint
+        CMD [ "node", "server.js" ]
+
+    ```
 
 
 
