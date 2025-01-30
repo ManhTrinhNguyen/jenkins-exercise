@@ -81,7 +81,7 @@ pipeline {
 
             sh 'git add .'
             sh 'git commit -m "ci: bump version"'
-            sh 'git push origin HEAD:main'
+            sh 'git push origin HEAD:Using-Shared-Library'
           }
           
         }
