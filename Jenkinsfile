@@ -60,7 +60,7 @@ pipeline {
       steps {
         script {
           echo 'Commit and push to Git Repo .....'
-          withCredentials([usernamePassword(credentialsId: 'github-credentials', usernameVariable: 'USER', passwordVariable: 'PWD']){
+          withCredentials([usernamePassword(credentialsId: 'github-credentials', usernameVariable: 'USER', passwordVariable: 'PWD')]){
             sh "git remote set-url origin https://${USER}:${PWD}@github.com/ManhTrinhNguyen/jenkins-exercise.git"
 
             sh 'git config --global user.email jenkins@gmail.com'
@@ -68,7 +68,7 @@ pipeline {
 
             sh 'git status'
             sh 'git config --list'
-            
+
             sh 'git add .'
             sh 'git commit -m "ci: bump version"'
             sh 'git push origin HEAD:main'
