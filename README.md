@@ -121,6 +121,7 @@ In order to see failing test, remove index.html or rename it and run tests.
     ```
 
 ## Step 3 : : Extract into Jenkins Shared Library 
+
     1. **Create My shared lib Repo** (https://github.com/ManhTrinhNguyen/Jenkins-Docker-Excercise-Shared-Library)
     2. Get My Share Lib :
     ```
@@ -130,10 +131,8 @@ In order to see failing test, remove index.html or rename it and run tests.
              credentialsId: 'github-credentials'
             ]
         )
-    ```
-    
+
     3. Or I want to put my Shared Lib in Global : 
-    ```
         - From Jenkins Manage -> Systems -> Global Trusted Pipeline Libraries -> Configure name, github url, credentials 
         - In Jenkinsfile : @Library('name of my library shared')
     ```
