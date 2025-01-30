@@ -13,6 +13,7 @@ pipeline {
         script {
           echo 'update version'
           sh 'cd app'
+          sh 'npm install -D auto-version-js'
           sh 'npx auto-version --patch'
 
           echo 'Read version'
