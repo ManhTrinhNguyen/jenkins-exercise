@@ -90,7 +90,15 @@ In order to see failing test, remove index.html or rename it and run tests.
     - Create Jenkinsfile to create pipeline 
         - From Pipeline enable : GitHub hook trigger for GITScm polling
         - From Github : `In the Repo go to : Setting -> Webhook -> Add Webhook`
-        - Dynamic increment App version 
-        - Dynamic Commit to a repo when done .
+    ```
+
+    - **Dynamic increment App version in Nodejs**
+    ```
+    1. npm install -D auto-version-js
+    2. 
+     - npx auto-version --patch # +0.0.1
+     - npx auto-version --minor # +0.1.0
+     - npx auto-version --major # +1.0.0
+     - npx auto-version # no args is equivalent to --patch
     ```
 
