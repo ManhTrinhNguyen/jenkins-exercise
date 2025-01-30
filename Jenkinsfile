@@ -66,20 +66,7 @@ pipeline {
         }
       }
     }
-    stage('Print ENV'){
-      environment {
-        GIT_HUB_ACCESS = credentials('github-credentials')
-      }
-      steps {
-        script {
-          echo 'My Username is ...'
-          sh "${GIT_HUB_ACCESS_USR}"
-
-          echo 'my password is ...'
-          sh "${GIT_HUB_ACCESS_PSW}"
-        }
-      }
-    }
+    
     stage ('Automatic Commit to Git repo'){
       steps {
         script {
