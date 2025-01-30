@@ -15,7 +15,7 @@ pipeline {
           def packageJson = readJSON file: './app/package.json'
           def app_version = packageJson.version
           env.IMAGE_NAME = "node-app-${app_version}"
-          echo "${env.DOCKER_REPO}${env.IMAGENAME}"
+          echo "${env.DOCKER_REPO}${env.IMAGE_NAME}"
         }
       }
     }
