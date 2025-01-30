@@ -11,7 +11,7 @@ pipeline {
     stage('Increment Version') {
       steps {
         script {
-          echo 'update version'
+          echo 'update version...'
           sh ''' 
             cd ./app
             npm install
@@ -37,10 +37,15 @@ pipeline {
         }
       }
     }
-    stage('Building stage'){
+    stage('Build and Push docker images ...'){
       steps {
         script {
-          echo 'Building stage'
+          echo 'Building Docker IMAGES'
+          withCredentials([usernamePassword(credentialsId: 'docker-hub-crendentials', usernameVariable: 'USER', passwordVariable: 'PWD')]){
+            sh "docker build -t ${env.DOCKER_REPO}:${env.IMAGE_NAME} ."
+            sh "echo ${PWD} | docker login -u ${USER} --password-stdin"
+            sh "docker push ${env.DOCKER_REPO}:${env.IMAGE_NAME}"
+          }
         }
       }
     }
