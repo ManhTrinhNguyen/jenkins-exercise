@@ -66,6 +66,16 @@ pipeline {
         }
       }
     }
+    stage('Print ENV'){
+      environment {
+        GIT_HUB_ACCESS = credentials('github-credentials')
+      }
+      steps {
+        script {
+          sh 'prinenv'
+        }
+      }
+    }
     stage ('Automatic Commit to Git repo'){
       steps {
         script {
