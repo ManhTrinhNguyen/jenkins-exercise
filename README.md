@@ -120,3 +120,5 @@ In order to see failing test, remove index.html or rename it and run tests.
         - In the Pipeline jobs -> Configure -> Additional Behavior -> Polling ignores commits from certain users
     ```
 
+## Step 3 : : Extract into Jenkins Shared Library 
+
