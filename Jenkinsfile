@@ -20,7 +20,7 @@ pipeline {
       steps {
         script {
           echo 'update version...'
-          updateNodeVersion 'patch'
+          updateNodejsVersion 'patch'
 
           echo 'Read version'
           def packageJson = readJSON file: './app/package.json'
