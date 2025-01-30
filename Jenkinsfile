@@ -20,11 +20,7 @@ pipeline {
       steps {
         script {
           echo 'update version...'
-          sh ''' 
-            cd ./app
-            npm install
-            npx auto-version --patch
-          '''
+          updateNodeVersion 'patch'
 
           echo 'Read version'
           def packageJson = readJSON file: './app/package.json'
