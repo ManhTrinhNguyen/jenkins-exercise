@@ -8,7 +8,7 @@ pipeline {
     stage('Increment Version') {
       steps {
         script {
-          echo 'Increment Vers'
+          echo 'Increment Version'
         }
       }
     }
