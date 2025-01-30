@@ -59,11 +59,21 @@ pipeline {
     stage ('Automatic Commit to Git repo'){
       steps {
         script {
-          echo 'Automatic Commit'
-          sh 'git remote '
-          sh 'git add .'
-          sh 'git commit -m "ci: bump version"'
-          sh 'git push origin HEAD:main'
+          echo 'Commit and push to Git Repo .....'
+          withCredentials([usernamePassword(credentialsId: 'github-credentials', usernameVariable: 'USER', passwordVariable: 'PWD']){
+            sh "git remote set-url origin https://${USER}:${PWD}@github.com/ManhTrinhNguyen/jenkins-exercise.git"
+
+            sh 'git config --global user.email jenkins@gmail.com'
+            sh 'git config --global user.name Jenkins'
+
+            sh 'git status'
+            sh 'git config --list'
+            
+            sh 'git add .'
+            sh 'git commit -m "ci: bump version"'
+            sh 'git push origin HEAD:main'
+          }
+          
         }
       }
     }
