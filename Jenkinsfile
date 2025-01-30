@@ -9,7 +9,7 @@ pipeline {
       steps {
         script {
           echo 'Read version'
-          def packageJson = readJSON file: 'package.json'
+          def packageJson = readJSON file: './app/package.json'
           env.APP_VERSION = packageJson.version
           echo "$APP_VERSION"
         }
