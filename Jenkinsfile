@@ -14,6 +14,7 @@ pipeline {
           echo 'update version'
           sh ''' 
             cd ./app
+            npm install
             npx auto-version --patch
           '''
 
