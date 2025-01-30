@@ -3,7 +3,7 @@ pipeline {
   tools {
     nodejs 'nodejs-20.10'
   }
-  environments {
+  environment {
     DOCKER_REPO='nguyenmanhtrinh/demo-app'
   }
 
