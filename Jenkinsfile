@@ -1,7 +1,7 @@
 pipeline {
   agent any 
   tools {
-    nodejs 'nodejs-20.10'
+    nodejs 'nodejs-20.8'
   }
   environment {
     DOCKER_REPO='nguyenmanhtrinh/demo-app'
