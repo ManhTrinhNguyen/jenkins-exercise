@@ -68,7 +68,7 @@ pipeline {
     }
     stage('Print ENV'){
       environment {
-        GIT_HUB_ACCESS = credentials('github-credentials')
+        ACCESS_SOMETHING = credentials('github-credentials')
       }
       steps {
         script {
