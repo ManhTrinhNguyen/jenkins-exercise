@@ -1,3 +1,11 @@
+library identifier: 'jenkins-shared-library@main', retriever: modernSCM(
+  [
+    $class: 'GitSCMSource',
+    remote: 'https://github.com/ManhTrinhNguyen/Jenkins-Docker-Excercise-Shared-Library.git',
+    credentialsId: 'github-credentials'
+  ]
+)
+
 pipeline {
   agent any 
   tools {
@@ -40,12 +48,14 @@ pipeline {
     stage('Build and Push docker images .....'){
       steps {
         script {
-          echo 'Building Docker IMAGES'
-          withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'USER', passwordVariable: 'PWD')]){
-            sh "docker build -t ${env.DOCKER_REPO}:${env.IMAGE_NAME} ."
-            sh "echo ${PWD} | docker login -u ${USER} --password-stdin"
-            sh "docker push ${env.DOCKER_REPO}:${env.IMAGE_NAME}"
-          }
+          echo 'Building Docker Images ...'
+          buildDockerImage "${env.DOCKER_REPO}:${env.IMAGE_NAME}"
+
+          echo 'Login to docker hub'
+          dockerLoginToDockerHub
+
+          echo 'Push Docker Images'
+          pushDockerImage "${env.DOCKER_REPO}:${env.IMAGE_NAME}"
         }
       }
     }
