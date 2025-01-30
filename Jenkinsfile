@@ -12,7 +12,7 @@ pipeline {
       steps {
         script {
           echo 'update version'
-          sh 'cd ./app'
+          sh 'cd app'
           sh 'npx auto-version --patch'
 
           echo 'Read version'
