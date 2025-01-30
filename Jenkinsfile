@@ -29,7 +29,11 @@ pipeline {
     stage('Testing stage'){
       steps {
         script {
-          echo 'Testing stage'
+          echo 'Testing ...'
+          sh '''
+            cd ./app
+            npm run test
+          '''
         }
       }
     }
