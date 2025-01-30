@@ -3,6 +3,9 @@ pipeline {
   tools {
     nodejs 'nodejs-20.10'
   }
+  environments {
+    DOCKER_REPO='nguyenmanhtrinh/demo-app'
+  }
 
   stages {
     stage('Increment Version') {
@@ -10,8 +13,9 @@ pipeline {
         script {
           echo 'Read version'
           def packageJson = readJSON file: './app/package.json'
-          env.APP_VERSION = packageJson.version
-          echo "$APP_VERSION"
+          def app_version = packageJson.version
+          env.IMAGE_NAME = "node-app-${app_version}"
+          echo "${env.DOCKER_REPO}${env.IMAGENAME}"
         }
       }
     }
