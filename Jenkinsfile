@@ -63,7 +63,7 @@ pipeline {
       steps {
         script {
           echo 'Commit and push to Git Repo .....'
-          pushToGitHub "github.com/ManhTrinhNguyen/jenkins-exercise.git" "Using-Shared-Library"
+          pushToGithub "github.com/ManhTrinhNguyen/jenkins-exercise.git" "Using-Shared-Library"
         }
       }
     }
