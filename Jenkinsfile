@@ -11,11 +11,15 @@ pipeline {
     stage('Increment Version') {
       steps {
         script {
+          echo 'Install Auto increase version and increase patch'
+          sh 'cd ./app && npm install'
+          sh 'npm install -D auto-version-js'
+          sh 'npx auto-version --patch'
+          
           echo 'Read version'
           def packageJson = readJSON file: './app/package.json'
           def app_version = packageJson.version
           env.IMAGE_NAME = "node-app-${app_version}"
-          echo "${env.DOCKER_REPO}${env.IMAGE_NAME}"
         }
       }
     }
