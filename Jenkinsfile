@@ -11,10 +11,14 @@ pipeline {
     stage('Increment Version') {
       steps {
         script {
+          echo 'update version'
+          sh 'npx auto-version --patch'
+
           echo 'Read version'
           def packageJson = readJSON file: './app/package.json'
           def app_version = packageJson.version
           env.IMAGE_NAME = "node-app-${app_version}"
+          echo "${env.IMAGE_NAME}"
         }
       }
     }
