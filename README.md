@@ -103,3 +103,17 @@ In order to see failing test, remove index.html or rename it and run tests.
     3. Install Plugin to use "readJSON file" : Pipeline: Utility Steps 
     ```
 
+    - **Auto Commit to Git and**
+    ```
+    NOTE: Make sure to user withCredentials to get USER and PASS
+    1. Connect to Git Repo Source : 
+        - git remote set-url origin https://${USER}:${PASS}@github.com/ManhTrinhNguyen/jenkins-exercise.git
+    2. Configure user name and email to set Stop the Webhook (When it auto commit and push Jenkins will not re run the pipeline job)
+        - git config --global user.email jenkins@gmail.com
+        - git config --global user.name Jenkins
+    3. Add, Commit and Push
+        - git add .
+        - git commit -m "ci: bump version"
+        - git push origin HEAD:main
+    ```
+
