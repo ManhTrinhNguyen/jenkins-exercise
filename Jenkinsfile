@@ -23,21 +23,17 @@ pipeline {
           updateNodejsVersion 'patch'
 
           echo 'Read version'
+
           def packageJson = readJSON file: './app/package.json'
           def app_version = packageJson.version
           env.IMAGE_NAME = "node-app-${app_version}"
-          echo "${env.IMAGE_NAME}"
         }
       }
     }
     stage('Testing stage'){
       steps {
         script {
-          echo 'Testing ...'
-          sh '''
-            cd ./app
-            npm run test
-          '''
+          runNodejsTest
         }
       }
     }
