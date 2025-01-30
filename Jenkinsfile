@@ -8,7 +8,10 @@ pipeline {
     stage('Increment Version') {
       steps {
         script {
-          echo 'Increment Version'
+          echo 'Read version'
+          def packageJson = readJSON file: 'package.json'
+          env.APP_VERSION = packageJson.version
+          echo "$APP_VERSION"
         }
       }
     }
