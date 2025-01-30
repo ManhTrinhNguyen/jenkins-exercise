@@ -100,5 +100,6 @@ In order to see failing test, remove index.html or rename it and run tests.
      - npx auto-version --minor # +0.1.0
      - npx auto-version --major # +1.0.0
      - npx auto-version # no args is equivalent to --patch
+    3. Install Plugin to use "readJSON file" : Pipeline: Utility Steps 
     ```
 
