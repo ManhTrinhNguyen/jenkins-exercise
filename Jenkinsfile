@@ -13,8 +13,9 @@ pipeline {
         script {
           echo 'update version'
           sh 'cd app'
+          sh 'npm install'
           sh 'npm install -D auto-version-js'
-          sh 'npx auto-version --patch'
+          sh 'npm run increasePatchVersion'
 
           echo 'Read version'
           def packageJson = readJSON file: './app/package.json'
