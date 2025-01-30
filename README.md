@@ -115,5 +115,8 @@ In order to see failing test, remove index.html or rename it and run tests.
         - git add .
         - git commit -m "ci: bump version"
         - git push origin HEAD:main
+
+    4 . Stop Web Hook to not re-run by using username :
+        - In the Pipeline jobs -> Configure -> Additional Behavior -> Polling ignores commits from certain users
     ```
 
