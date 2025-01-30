@@ -94,4 +94,3 @@ In order to see failing test, remove index.html or rename it and run tests.
         - Dynamic Commit to a repo when done .
     ```
 
-
