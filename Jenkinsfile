@@ -68,11 +68,15 @@ pipeline {
     }
     stage('Print ENV'){
       environment {
-        ACCESS_SOMETHING = credentials('my-access-something')
+        GIT_HUB_ACCESS = credentials('github-credentials')
       }
       steps {
         script {
-          sh 'prinenv'
+          echo 'My Username is ...'
+          sh "${GIT_HUB_ACCESS_USR}"
+
+          echo 'my password is ...'
+          sh "${GIT_HUB_ACCESS_PSW}"
         }
       }
     }
