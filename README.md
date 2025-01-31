@@ -137,3 +137,38 @@ In order to see failing test, remove index.html or rename it and run tests.
         - In Jenkinsfile : @Library('name of my library shared')
     ```
 
+# AWS Service 
+
+## Create IAM User 
+  - I using AWS UI to create User and Group 
+  - Give Group the EC2fullAccess permission 
+
+## Configure AWS CLI 
+  ```
+    - Used : aws configure 
+      - Set credentials for that User so User can connect with AWS CLI 
+      - Set Region for AWS CLI 
+  ```
+
+## Create VPC 
+  ```
+    I use AWS CLI to create VPC 
+      - Create VPC with specific cidr block : aws ec2 create-vpc --cidr-block 172.32.0.0/24 --query Vpc.VpcId --output text
+        Will return vpc-id 
+
+      - Create Subnet with VPC id : aws ec2 create-subnet --vpc-id vpc-0d434a4d2b1901c4b --availability-zone us-west-1a --cidr-block 172.32.0.0/25 --query Subnet.SubnetId --output text
+        Will return subnet-id
+    
+    I use these tool to calulate and divide IP range:
+      IP Calculator: https://mxtoolbox.com/subnetcalculator.aspx
+      IP Calculator with binary values: http://jodies.de/ipcalc
+      Calculate sub-CIDR blocks: http://www.davidc.net/sites/default/subnets/subnets.html 
+  ```
+
+## Create Security Group 
+  ```
+    - Create Security Group: aws ec2 create-security-group --group-name my-sg --description "My SG" --vpc-id vpc-00f5f8e457eb61189
+    -Create Security Groups rules: aws ec2 authorize-security-group-ingress --group-id sg-0bed0e6f3f4ebfc3c --protocol tcp --port 22 --cidr 198.27.191.24/32
+    Create-keypair: aws ec2 create-key-pair --key-name MyKpCli --query 'KeyMaterial' --output text > MyKpCli.pem`
+  ```
+
