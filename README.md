@@ -196,3 +196,11 @@ In order to see failing test, remove index.html or rename it and run tests.
     - Make Docker available for other user with using Sudo : usermod -aG docker ${USER} . After this I need to exit and login again
   ```
 
+## Connect EC2 server to Jenkins server vi ssh (ssh agent)
+  ```
+    - Install ssh agent plugin from Jenkins : Go to Manage -> Plugin -> SSH agent . This plugin allow me to use SSH credentials of the EC2 server to SSH into my instance
+    - Create EC2 Credentials in Global Scope : Choose SSH username with private key -> paste my .pem key to that
+    - Open ssh port allow Jenkins to access : Configure firewall
+    - Connect EC2 and Run Docker in Jenkinsfile : 
+  ```
+

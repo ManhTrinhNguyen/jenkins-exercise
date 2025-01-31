@@ -49,10 +49,16 @@ pipeline {
         }
       }
     }
-    stage('Deploy Stage'){
+    stage('Deploy To EC2'){
       steps {
         script {
-          echo 'Deploy Stage'
+          echo 'Deploying to EC2'
+          sshagent(['ec2-credentials']) {
+            sh """
+              ssh -o StrictHostKeyChecking=no ec2-user@ec2-user@13.57.187.125 
+              docker run -d -p 3000:3000 nguyenmanhtrinh/demo-app:node-app-1.0.9
+            """
+          }
         }
       }
     }
