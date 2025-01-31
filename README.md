@@ -166,33 +166,33 @@ In order to see failing test, remove index.html or rename it and run tests.
   ```
 
 ## Create and Attach an Internet Gateway
-    ```
+  ```
     - Create The internet Gateway (Router): aws ec2 create-internet-gateway --query 'InternetGateway.InternetGatewayId' --output text
     igw-08389efafdfeadd2f
 
     - Attach the IGW (Router) to a VPC (Virtual Private Cloud): aws ec2 attach-internet-gateway --internet-gateway-id igw-08389efafdfeadd2f --vpc-id vpc-0d434a4d2b1901c4b
 
     Then add the internet route (0.0.0.0/0) to IGW : aws ec2 create-route --route-table-id rtb-044ee3835233a7547 --destination-cidr-block 0.0.0.0/0 --gateway-id igw-0d9eb190b5308b22b
-    ```
+  ```
 
 ## Create Security Group 
-    ```
+  ```
     - Create Security Group: aws ec2 create-security-group --group-name my-sg --description "My SG" --vpc-id vpc-xxxx
     - Create Security Groups rules: aws ec2 authorize-security-group-ingress --group-id sg-xxxx --protocol tcp --port 22 --cidr 198.27.191.24/32
     Create-keypair: aws ec2 create-key-pair --key-name MyKpCli --query 'KeyMaterial' --output text > MyKpCli.pem`
-    ```
+  ```
 
 ## Create EC2 Instance 
-    ```
+  ```
     - Create ec2 instance : aws ec2 run-instances --image-id ami-0fca1aacaa1ed9168 --count 1 --instance-type t2.micro --key-name tim --security-group-ids sg-0dcc26b2309569b5b --subnet-id subnet-0d220d84c63cad99e
-    ```
+  ```
 
 ## Install Docker on EC2 
-    ```
+  ```
     - SSH to EC2 : ssh -i key.pem ec2-user@ip-address-public
     - Update Package Manager : sudo yum update
     - Install Docker : sudo yum install docker
     - Start Docker : sudo service docker start
     - Make Docker available for other user with using Sudo : usermod -aG docker ${USER} . After this I need to exit and login again
-    ```
+  ```
 
